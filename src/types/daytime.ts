@@ -1,0 +1,1 @@
+export type Daytime = "morning" | "afternoon" | "evening" | "night";
