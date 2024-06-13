@@ -36,13 +36,18 @@ export const Forecast = () => {
           // Currently, I'm "constructing" keys in some weird way
           // I know, thats not the best solution
           // But since we are not using real API
-          // I figured we can stick with it for now 
-          <div key={Object.values(day).map((value) => value.temperature).join('')}>
-            <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 p-5 pb-10">
+          // I figured we can stick with it for now
+          <div
+            key={Object.values(day)
+              .map((value) => value.temperature)
+              .join("")}
+            className="overflow-x-scroll"
+          >
+            <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 p-5 pb-10">
               {i === 0 ? "Today" : "Tomorrow"}
             </h2>
-            <ScrollArea className="w-96 whitespace-nowrap rounded-md">
-              <div className="flex w-max space-x-4 p-4">
+            <ScrollArea className="w-96 whitespace-nowrap rounded-md ">
+              <div className="flex w-max space-x-4 p-4 overflow-x-scroll">
                 {Object.entries(day).map(([daytime, weather]) => (
                   <figure
                     key={weather.temperature + weather.type}
@@ -58,8 +63,8 @@ export const Forecast = () => {
                     />
                   </figure>
                 ))}
+                <ScrollBar orientation="horizontal" />
               </div>
-              <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </div>
         );
