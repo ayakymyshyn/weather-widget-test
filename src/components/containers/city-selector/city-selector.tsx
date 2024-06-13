@@ -55,7 +55,7 @@ export const CitySelector = ({ onSelect, value }: CitySelectorProps) => {
             <CommandGroup>
               {capitals.map((capital) => (
                 <CommandItem
-                  key={capital.value}
+                  key={capital.value + capital.label}
                   value={capital.value}
                   onSelect={(currentValue) => {
                     onSelect(currentValue);

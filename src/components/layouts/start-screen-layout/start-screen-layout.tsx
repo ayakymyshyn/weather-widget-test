@@ -13,7 +13,7 @@ export const StartScreenLayout = ({
   children,
 }: PropsWithChildren<StartScreenLayoutProps>) => {
   const email = useUserStore((state) => state.email);
-  
+
   return (
     <>
       <div className="container relative hidden h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -29,7 +29,12 @@ export const StartScreenLayout = ({
         )}
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
           <div
-            className={`absolute inset-0 bg-[url(${backgroundUrl})] bg-cover`}
+            // Tailwind does not work well with dynamic attributes
+            // So that is why inline styles are needed here
+            // There might be a better approach
+            // But I guess we can move forward with this one for now 
+            style={{ backgroundImage: `url(${backgroundUrl})` }}
+            className={`absolute inset-0 bg-cover`}
           />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg

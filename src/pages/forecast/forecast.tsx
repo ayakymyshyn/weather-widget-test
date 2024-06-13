@@ -30,8 +30,14 @@ export const Forecast = () => {
       {forecastData?.map((day, i) => {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
+
         return (
-          <>
+          // In real-world we would get some unique ID's, which can be used here
+          // Currently, I'm "constructing" keys in some weird way
+          // I know, thats not the best solution
+          // But since we are not using real API
+          // I figured we can stick with it for now 
+          <div key={Object.values(day).map((value) => value.temperature).join('')}>
             <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 p-5 pb-10">
               {i === 0 ? "Today" : "Tomorrow"}
             </h2>
@@ -44,6 +50,7 @@ export const Forecast = () => {
                   >
                     <WeatherCard
                       city={city}
+                      key={weather.temperature + weather.type}
                       temperature={weather.temperature}
                       weather={weather.type}
                       daytime={daytime as Daytime}
@@ -54,7 +61,7 @@ export const Forecast = () => {
               </div>
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
-          </>
+          </div>
         );
       })}
     </>
