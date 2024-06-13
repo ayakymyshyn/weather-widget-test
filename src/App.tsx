@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   {
     path: "*",
     loader: () => {
-      return redirect("/sign-up");
+      return redirect(ROUTES.signUp);
     },
   },
 ]);
